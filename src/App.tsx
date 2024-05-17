@@ -22,41 +22,43 @@ function App() {
   return (
     <div>
       <Header />
-      <main className="main container">
-        <div className="search">
-          <input
-            className="search-input"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-          />
-          <button className="button" onClick={handleSearch}>
-            Search
-          </button>
-        </div>
-        {tiles.length ? (
-          <div className="tile-list">
-            {tiles.map((tile: Tiles) => (
-              <div className="tile" key={tile.id}>
-                <img
-                  className="tile-img"
-                  loading="lazy"
-                  src={tile.webImage?.url ?? "/no_image.png"}
-                  alt={tile.title}
-                  onError={(e) => {
-                    e.currentTarget.src = "/no_image.png";
-                  }}
-                />
-                <span className="tile-overview">{tile.longTitle}</span>
-              </div>
-            ))}
+      <main className="container">
+        <div className="main">
+          <div className="search">
+            <input
+              className="search-input"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+            <button className="button" onClick={handleSearch}>
+              Search
+            </button>
           </div>
-        ) : null}
-        {loading && <p>loading...</p>}
-        {count > tiles.length && (
-          <button className="button" onClick={handleLoadMoreData}>
-            Load more
-          </button>
-        )}
+          {tiles.length ? (
+            <div className="tile-list">
+              {tiles.map((tile: Tiles) => (
+                <div className="tile" key={tile.id}>
+                  <img
+                    className="tile-img"
+                    loading="lazy"
+                    src={tile.webImage?.url ?? "/no_image.png"}
+                    alt={tile.title}
+                    onError={(e) => {
+                      e.currentTarget.src = "/no_image.png";
+                    }}
+                  />
+                  <span className="tile-overview">{tile.longTitle}</span>
+                </div>
+              ))}
+            </div>
+          ) : null}
+          {loading && <p>loading...</p>}
+          {count === tiles.length || !(tiles.length < 20) && (
+            <button className="button" style={{ marginTop: '2rem' }} onClick={handleLoadMoreData}>
+              Load more
+            </button>
+          )}
+        </div>
       </main>
     </div>
   );

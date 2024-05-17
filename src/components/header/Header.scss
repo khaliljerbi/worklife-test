@@ -1,4 +1,11 @@
 .header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  background-color: #ebe5e5;
+  color: #000;
   display: flex;
   align-items: center;
   height: 70px;

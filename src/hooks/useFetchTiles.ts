@@ -11,9 +11,8 @@ export const useFetchTiles = (
   const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
-    if (q) {
+
       setTiles([]);
-    }
   }, [q]);
 
   useEffect(() => {
