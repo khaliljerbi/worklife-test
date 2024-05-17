@@ -1,5 +1,6 @@
 # Worklife test app
-
+## live demo
+https://worklife-test.netlify.app/
 ## Project setup
 ```
 yarn install
